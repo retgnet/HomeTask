@@ -1,17 +1,21 @@
 package com.maximov;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+import com.maximov.hw11.Cat;
+import com.maximov.hw11.Horse;
+
+public class Main {
+    public static void main(String[] args){
+        Horse horse = new Horse("mustang", 100,2,2);
+        horse.info();
+        horse.run(10);
+        horse.swim(10);
+        horse.info();
+        Cat cat = new Cat("murzik", 20, 2, 2);
+        cat.info();
+        cat.run(10);
+        cat.swim(10);
+        cat.info();
+
     }
 }
