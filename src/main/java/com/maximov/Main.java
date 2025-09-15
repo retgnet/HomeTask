@@ -1,17 +1,23 @@
 package com.maximov;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+import com.maximov.Hw13.*;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Human human = new Human("Алексей");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Car car = new Car();
+        Horse horse = new Horse();
+        Bicycle bicycle = new Bicycle();
+        Rover rover = new Rover();
+
+        human.move(5,Terrain.SWAMP);
+        car.move(20,Terrain.PLAIN);
+        horse.move(15,Terrain.SWAMP);
+        rover.move(50,Terrain.SWAMP);
+        bicycle.move(101, Terrain.PLAIN);
+        human.sitOnTransport(horse);
+        human.standUp();
     }
 }
