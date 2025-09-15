@@ -16,16 +16,17 @@ public class Bicycle implements Transport {
     }
 
     @Override
-    public void move(int distance, Terrain terrain) {
+    public boolean move(int distance, Terrain terrain) {
         if (terrain.equals(Terrain.SWAMP)) {
             System.out.println("Велосипед не может передвигаться по болоту!");
-            return;
+            return false;
         }
         if (driverStamina < distance) {
             System.out.println("Гонщик устал!");
-            return;
+            return false;
         }
         driverStamina -= distance;
         System.out.println("Успешно пройдено!");
+        return true;
     }
 }

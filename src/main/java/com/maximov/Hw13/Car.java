@@ -18,16 +18,17 @@ public class Car implements Transport {
     }
 
     @Override
-    public void move(int distance, Terrain terrain) {
+    public boolean move(int distance, Terrain terrain) {
         if (terrain.equals(DENSE_FOREST) || terrain.equals(SWAMP)) {
             System.out.println("Машина не может двигаться в этой местности");
-            return;
+            return false;
         }
         if (fuel < distance) {
             System.out.println("Недостаточно топлива");
-            return;
+            return false;
         }
         fuel -= distance;
         System.out.println("Успешно пройдено!");
+        return true;
     }
 }

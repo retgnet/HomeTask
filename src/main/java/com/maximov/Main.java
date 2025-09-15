@@ -17,5 +17,7 @@ public class Main {
         horse.move(15,Terrain.SWAMP);
         rover.move(50,Terrain.SWAMP);
         bicycle.move(101, Terrain.PLAIN);
+        human.sitOnTransport(horse);
+        human.standUp();
     }
 }

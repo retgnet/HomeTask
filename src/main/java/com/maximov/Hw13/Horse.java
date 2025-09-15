@@ -16,16 +16,17 @@ public class Horse implements Transport {
     }
 
     @Override
-    public void move(int distance, Terrain terrain) {
+    public boolean move(int distance, Terrain terrain) {
         if (terrain.equals(Terrain.SWAMP)) {
             System.out.println("Лошадь не может бежать по болоту!");
-            return;
+            return false;
         }
         if (stamina < distance) {
             System.out.println("Лошадь устала!");
-            return;
+            return false;
         }
         stamina -= distance;
         System.out.println("Успешно пройдено!");
+        return true;
     }
 }

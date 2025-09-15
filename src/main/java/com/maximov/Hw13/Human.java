@@ -1,6 +1,6 @@
 package com.maximov.Hw13;
+import com.maximov.Hw13.Transport;
 
-import com.sun.jdi.connect.Transport;
 
 public class Human {
     private String name;
@@ -20,12 +20,12 @@ public class Human {
 
     public void sitOnTransport(Transport transport) {
         currentTransport = transport;
-        System.out.println(name + " сел на " + currentTransport.getClass());
+        System.out.println(name + " сел на " + currentTransport.getType());
     }
 
     public void standUp() {
         if (currentTransport != null) {
-            System.out.println(name + " встал с " + currentTransport.getClass());
+            System.out.println(name + " встал с " + currentTransport.getType());
             currentTransport = null;
         }
     }

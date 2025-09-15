@@ -16,12 +16,13 @@ public class Rover implements Transport {
     }
 
     @Override
-    public void move(int distance, Terrain terrain) {
+    public boolean move(int distance, Terrain terrain) {
         if (fuel < distance) {
             System.out.println("Недостаточно топлива!");
-            return;
+            return false;
         }
         fuel -= distance;
         System.out.println("Успешно пройдено!");
+        return true;
     }
 }
