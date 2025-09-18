@@ -1,17 +1,29 @@
 package com.maximov;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        String[][] correctArray = new String[][]{
+                {"1","2","3","4"},
+                {"1","2","3","4"},
+                {"1","2","3","4"},
+                {"1","2","3","4"}};
+        String[][] incorrectArray = new String[][]{
+                {"1","2","3","4"},
+                {"1","2","3s","4"},
+                {"1","2","3","4"},
+                {"1","2","3","4f"}};
+
+        try{
+            int result = Math.sumElementsOfArray(correctArray);
+            System.out.println("Сумма элементов: " + result);
+            System.out.println(Math.sumElementsOfArray(incorrectArray));
+        }catch (AppArraySizeException e){
+            System.err.println("Ошибка размера массива! " + e.getMessage());
+        }catch (AppArrayDataException e){
+            System.err.println("Ошибка данных в массиве! " + e.getMessage());
         }
+
+
     }
 }
