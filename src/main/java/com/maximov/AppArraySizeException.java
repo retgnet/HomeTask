@@ -1,6 +1,6 @@
 package com.maximov;
 
-public class AppArraySizeException extends RuntimeException{
+public class AppArraySizeException extends Exception {
     public AppArraySizeException(String message) {
         super(message);
     }

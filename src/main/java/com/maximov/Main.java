@@ -3,14 +3,27 @@ package com.maximov;
 public class Main {
     public static void main(String[] args) {
 
-        String[][] arr = new String[][]{
+        String[][] correctArray = new String[][]{
                 {"1","2","3","4"},
                 {"1","2","3","4"},
                 {"1","2","3","4"},
                 {"1","2","3","4"}};
+        String[][] incorrectArray = new String[][]{
+                {"1","2","3","4"},
+                {"1","2","3s","4"},
+                {"1","2","3","4"},
+                {"1","2","3","4f"}};
 
-        Math math = new Math();
-        math.sumElementsOfArray(arr);
+        try{
+            int result = Math.sumElementsOfArray(correctArray);
+            System.out.println("Сумма элементов: " + result);
+            System.out.println(Math.sumElementsOfArray(incorrectArray));
+        }catch (AppArraySizeException e){
+            System.err.println("Ошибка размера массива! " + e.getMessage());
+        }catch (AppArrayDataException e){
+            System.err.println("Ошибка данных в массиве! " + e.getMessage());
+        }
+
 
     }
 }
