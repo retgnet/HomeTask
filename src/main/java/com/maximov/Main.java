@@ -14,11 +14,18 @@ public class Main {
         System.out.println(increaseElementOfListToValue(CreateAndFillList(1, 3), 2));
 
         ArrayList<Employer> employers = new ArrayList<>();
+
         employers.add(new Employer("Максим", 30));
+
         employers.add(new Employer("Игорь", 22));
+
         employers.add(new Employer("Никита", 18));
+
         System.out.println(returnNameOfEmployers(employers));
+
         System.out.println(returnNameOfEmployers(employers, 19));
+
+        checkAverageAgeOfEmployers(employers, 22);
 
     }
 
@@ -74,5 +81,17 @@ public class Main {
             }
         }
         return names;
+    }
+
+    public static void checkAverageAgeOfEmployers(ArrayList<Employer> employers, int averageAge) {
+        int averageAgeOfEmployers = 0;
+        for (Employer employer : employers) {
+            averageAgeOfEmployers += employer.getAge();
+        }
+        if (averageAgeOfEmployers / employers.size() > averageAge) {
+            System.out.println("Средний возраст сотрудников выше нормы!");
+        } else {
+            System.out.println("Средний возраст сотрудников в норме");
+        }
     }
 }
