@@ -18,6 +18,7 @@ public class Main {
         employers.add(new Employer("Игорь", 22));
         employers.add(new Employer("Никита", 18));
         System.out.println(returnNameOfEmployers(employers));
+        System.out.println(returnNameOfEmployers(employers, 19));
 
     }
 
@@ -56,11 +57,22 @@ public class Main {
         }
         return list;
     }
-    public static ArrayList<String> returnNameOfEmployers(ArrayList<Employer> employers){
+
+    public static ArrayList<String> returnNameOfEmployers(ArrayList<Employer> employers) {
         ArrayList<String> names = new ArrayList<>();
-        for(Employer employer : employers){
+        for (Employer employer : employers) {
             names.add(employer.getName());
         }
-        return  names;
+        return names;
+    }
+
+    public static ArrayList<String> returnNameOfEmployers(ArrayList<Employer> employers, int minAge) {
+        ArrayList<String> names = new ArrayList<>();
+        for (Employer employer : employers) {
+            if (employer.getAge() >= minAge) {
+                names.add(employer.getName());
+            }
+        }
+        return names;
     }
 }
