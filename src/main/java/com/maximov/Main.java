@@ -21,11 +21,15 @@ public class Main {
 
         employers.add(new Employer("Никита", 18));
 
+        employers.add(new Employer("Андрей", 44));
+
         System.out.println(returnNameOfEmployers(employers));
 
         System.out.println(returnNameOfEmployers(employers, 19));
 
         checkAverageAgeOfEmployers(employers, 22);
+
+        System.out.println(youngestEmployee(employers));
 
     }
 
@@ -93,5 +97,17 @@ public class Main {
         } else {
             System.out.println("Средний возраст сотрудников в норме");
         }
+    }
+
+    public static String youngestEmployee(ArrayList<Employer> employers) {
+        String youngEmployee = " ";
+        int minAge = Integer.MAX_VALUE;
+        for (Employer employer : employers) {
+            if (employer.getAge() < minAge) {
+                minAge = employer.getAge();
+                youngEmployee = employer.getName();
+            }
+        }
+        return youngEmployee;
     }
 }
