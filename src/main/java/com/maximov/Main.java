@@ -12,6 +12,13 @@ public class Main {
         System.out.println(setValueInList(CreateAndFillList(-3, 3), 5));
 
         System.out.println(increaseElementOfListToValue(CreateAndFillList(1, 3), 2));
+
+        ArrayList<Employer> employers = new ArrayList<>();
+        employers.add(new Employer("Максим", 30));
+        employers.add(new Employer("Игорь", 22));
+        employers.add(new Employer("Никита", 18));
+        System.out.println(returnNameOfEmployers(employers));
+
     }
 
     public static ArrayList<Integer> CreateAndFillList(int minNumberOfRange, int maxNumberOfRange) {
@@ -48,5 +55,12 @@ public class Main {
             list.set(i, list.get(i) + value);
         }
         return list;
+    }
+    public static ArrayList<String> returnNameOfEmployers(ArrayList<Employer> employers){
+        ArrayList<String> names = new ArrayList<>();
+        for(Employer employer : employers){
+            names.add(employer.getName());
+        }
+        return  names;
     }
 }
