@@ -9,6 +9,8 @@ public class Main {
 
         List<Integer> list = new ArrayList<>();
         System.out.println(sumOfList(fillListForMethod(list, 0, 10)));
+
+        System.out.println(setValueInList(fillListForMethod(list, -3, 3), 5));
     }
 
     public static List<Integer> rangeBetweenMaxAndMin(int min, int max) {
@@ -29,6 +31,13 @@ public class Main {
     public static List<Integer> fillListForMethod(List<Integer> list, int minNumberOfRange, int maxNumberOfRange) {
         for (int i = minNumberOfRange; i <= maxNumberOfRange; i++) {
             list.add(i);
+        }
+        return list;
+    }
+
+    public static List<Integer> setValueInList(List<Integer> list, int value) {
+        for (int i = 0; i < list.size(); i++) {
+            list.set(i, value);
         }
         return list;
     }
