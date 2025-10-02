@@ -1,21 +1,29 @@
 package com.maximov;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println(rangeBetweenMaxAndMin(-9, 2));
 
-        List<Integer> list = new ArrayList<>();
-        System.out.println(sumOfList(fillListForMethod(list, 0, 10)));
+        System.out.println(sumOfList(CreateAndFillList(0, 10)));
 
-        System.out.println(setValueInList(fillListForMethod(list, -3, 3), 5));
+        System.out.println(setValueInList(CreateAndFillList(-3, 3), 5));
+
+        System.out.println(increaseElementOfListToValue(CreateAndFillList(1, 3), 2));
     }
 
-    public static List<Integer> rangeBetweenMaxAndMin(int min, int max) {
-        List<Integer> list = new ArrayList<>();
-        return fillListForMethod(list, min, max);
+    public static ArrayList<Integer> CreateAndFillList(int minNumberOfRange, int maxNumberOfRange) {
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = minNumberOfRange; i <= maxNumberOfRange; i++) {
+            list.add(i);
+        }
+        return list;
+    }
+
+    public static ArrayList<Integer> rangeBetweenMaxAndMin(int min, int max) {
+        return CreateAndFillList(min, max);
     }
 
     public static int sumOfList(List<Integer> list) {
@@ -28,16 +36,16 @@ public class Main {
         return sum;
     }
 
-    public static List<Integer> fillListForMethod(List<Integer> list, int minNumberOfRange, int maxNumberOfRange) {
-        for (int i = minNumberOfRange; i <= maxNumberOfRange; i++) {
-            list.add(i);
+    public static ArrayList<Integer> setValueInList(ArrayList<Integer> list, int value) {
+        for (int i = 0; i < list.size(); i++) {
+            list.set(i, value);
         }
         return list;
     }
 
-    public static List<Integer> setValueInList(List<Integer> list, int value) {
+    public static List<Integer> increaseElementOfListToValue(ArrayList<Integer> list, int value) {
         for (int i = 0; i < list.size(); i++) {
-            list.set(i, value);
+            list.set(i, list.get(i) + value);
         }
         return list;
     }
