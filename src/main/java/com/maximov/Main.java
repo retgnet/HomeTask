@@ -13,7 +13,7 @@ public class Main {
 
         System.out.println(increaseElementOfListToValue(CreateAndFillList(1, 3), 2));
 
-        ArrayList<Employer> employers = new ArrayList<>();
+        List<Employer> employers = new ArrayList<>();
 
         employers.add(new Employer("Максим", 30));
 
@@ -33,15 +33,15 @@ public class Main {
 
     }
 
-    public static ArrayList<Integer> CreateAndFillList(int minNumberOfRange, int maxNumberOfRange) {
-        ArrayList<Integer> list = new ArrayList<>();
+    public static List<Integer> CreateAndFillList(int minNumberOfRange, int maxNumberOfRange) {
+        List<Integer> list = new ArrayList<>();
         for (int i = minNumberOfRange; i <= maxNumberOfRange; i++) {
             list.add(i);
         }
         return list;
     }
 
-    public static ArrayList<Integer> rangeBetweenMaxAndMin(int min, int max) {
+    public static List<Integer> rangeBetweenMaxAndMin(int min, int max) {
         return CreateAndFillList(min, max);
     }
 
@@ -55,30 +55,30 @@ public class Main {
         return sum;
     }
 
-    public static ArrayList<Integer> setValueInList(ArrayList<Integer> list, int value) {
+    public static List<Integer> setValueInList(List<Integer> list, int value) {
         for (int i = 0; i < list.size(); i++) {
             list.set(i, value);
         }
         return list;
     }
 
-    public static List<Integer> increaseElementOfListToValue(ArrayList<Integer> list, int value) {
+    public static List<Integer> increaseElementOfListToValue(List<Integer> list, int value) {
         for (int i = 0; i < list.size(); i++) {
             list.set(i, list.get(i) + value);
         }
         return list;
     }
 
-    public static ArrayList<String> returnNameOfEmployers(ArrayList<Employer> employers) {
-        ArrayList<String> names = new ArrayList<>();
+    public static List<String> returnNameOfEmployers(List<Employer> employers) {
+        List<String> names = new ArrayList<>();
         for (Employer employer : employers) {
             names.add(employer.getName());
         }
         return names;
     }
 
-    public static ArrayList<String> returnNameOfEmployers(ArrayList<Employer> employers, int minAge) {
-        ArrayList<String> names = new ArrayList<>();
+    public static List<String> returnNameOfEmployers(List<Employer> employers, int minAge) {
+        List<String> names = new ArrayList<>();
         for (Employer employer : employers) {
             if (employer.getAge() >= minAge) {
                 names.add(employer.getName());
@@ -87,7 +87,7 @@ public class Main {
         return names;
     }
 
-    public static void checkAverageAgeOfEmployers(ArrayList<Employer> employers, int averageAge) {
+    public static void checkAverageAgeOfEmployers(List<Employer> employers, int averageAge) {
         int averageAgeOfEmployers = 0;
         for (Employer employer : employers) {
             averageAgeOfEmployers += employer.getAge();
@@ -99,7 +99,7 @@ public class Main {
         }
     }
 
-    public static String youngestEmployee(ArrayList<Employer> employers) {
+    public static String youngestEmployee(List<Employer> employers) {
         String youngEmployee = " ";
         int minAge = Integer.MAX_VALUE;
         for (Employer employer : employers) {
