@@ -9,10 +9,6 @@ public class Employer {
         this.age = age;
     }
 
-    public Employer(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return name;
     }
