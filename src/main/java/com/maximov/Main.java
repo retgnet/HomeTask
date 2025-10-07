@@ -1,17 +1,21 @@
 package com.maximov;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        PhoneBook phoneBook = new PhoneBook();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        phoneBook.add("79276666743", "Николай");
+        phoneBook.add("79278451762", "Алена");
+        phoneBook.add("79516751231", "Артем");
+        phoneBook.add("79520009865", "Николай");
+        System.out.println(phoneBook.find("Николай"));
+        System.out.println(phoneBook.find("Николай"));
+        System.out.println(phoneBook.find("Артем"));
+
+        System.out.println(phoneBook.containsPhoneNumber("79276666743"));
+        System.out.println(phoneBook.containsPhoneNumber("79276666741"));
+
+        System.out.println(phoneBook.getMapNames());
     }
 }
