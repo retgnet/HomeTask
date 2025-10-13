@@ -1,17 +1,73 @@
 package com.maximov;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Текущие файлы: ");
+        System.out.println(checkCurrentFiles());
+        System.out.println("Введите имя файла, который хотите просмотреть: ");
+        String nameFile = scanner.nextLine();
+        if (checkCurrentFiles().contains(nameFile)) {
+            fileRead(nameFile);
+            System.out.println("Введите информацию, которую хотите записать в файл: ");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+            String data = scanner.nextLine();
+            writeFile(nameFile, data);
+            fileRead(nameFile);
+        } else {
+            System.out.println("Неверно ввели имя файла!");
+        }
+    }
+
+    public static List<String> checkCurrentFiles() {
+        File directory = new File(".");
+        FilenameFilter txt = new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.toLowerCase().endsWith(".txt");
+            }
+        };
+        File[] txtFiles = directory.listFiles(txt);
+        List<String> listFiles = new ArrayList<>();
+        if (txtFiles != null) {
+            for (File file : txtFiles) {
+                listFiles.add(file.getName());
+            }
+        } else {
+            System.out.println("Ошибка! Файлов с расширением txt не существует в данной директории! ");
+        }
+        return listFiles;
+    }
+
+    public static void fileRead(String nameFile) {
+        try (BufferedInputStream in = new BufferedInputStream(new FileInputStream(nameFile))) {
+
+            int n = in.read();
+            while (n != -1) {
+                System.out.print((char) n);
+                n = in.read();
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println();
+    }
+
+    public static void writeFile(String nameFile, String data) {
+        try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(nameFile))) {
+            byte[] buffer = data.getBytes(StandardCharsets.UTF_8);
+            for (byte b : buffer) {
+                out.write(b);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
