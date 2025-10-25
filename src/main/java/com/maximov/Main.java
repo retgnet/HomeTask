@@ -1,8 +1,7 @@
 package com.maximov;
 
-import java.util.Arrays;
-
 public class Main {
+    private static final int SIZE = 100_000_000;
     public static void main(String[] args) throws InterruptedException {
 
         long startTime = System.currentTimeMillis();
@@ -20,27 +19,25 @@ public class Main {
     }
 
     private static double[] fillArraySingleThread() {
-        int size = 100_000_000;
-        double[] array = new double[size];
-        for (int i = 0; i < size; i++) {
-            array[i] = 1.14 * Math.cos(i) * Math.sin(i * 0.2) * Math.cos(i / 1.2);
+        double[] array = new double[SIZE];
+        for (int i = 0; i < SIZE; i++) {
+            array[i] = resolveMethodMath(i);
         }
         return array;
     }
 
     private static double[] fillArrayMultiThread(){
-        int size = 100_000_000;
-        double[] array = new double[size];
-        int partSize = size / 4;
+        double[] array = new double[SIZE];
+        int partSize = SIZE / 4;
         Thread[] threads = new Thread[4];
 
         for (int t = 0; t < 4; t++) {
             final int threadIndex = t;
             threads[t] = new Thread(() -> {
                 int start = threadIndex * partSize;
-                int end = (threadIndex == 3) ? size : start + partSize;
+                int end = (threadIndex == 3) ? SIZE : start + partSize;
                 for (int i = start; i < end; i++) {
-                    array[i] = 1.14 * Math.cos(i) * Math.sin(i * 0.2) * Math.cos(i / 1.2);
+                    array[i] = resolveMethodMath(i);
                 }
             });
             threads[t].start();
@@ -55,6 +52,9 @@ public class Main {
         }
 
         return array;
+    }
+    public static double resolveMethodMath(int num){
+        return 1.14 * Math.cos(num) * Math.sin(num * 0.2) * Math.cos(num / 1.2);
     }
 
 
